@@ -6,6 +6,10 @@ app.get("/", (req, res) =>{
     res.send("Assignment Setup Complete!");
 })
 
+app.post("/identify", (req, res) =>{
+    res.send("Identify Endpoint");
+})
+
 app.listen(port, ()=>{
     console.log(`Server setup and ready on port ${port}`);
 })
