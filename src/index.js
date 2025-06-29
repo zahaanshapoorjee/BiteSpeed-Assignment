@@ -10,11 +10,16 @@ app.get("/", (req, res) =>{
 
 app.post("/identify", (req, res) =>{
     const { email, phoneNumber} = req.body;
+    var primaryContactIds = []; // this is what we are going to fetch from mysql db
+    var secondaryContactIds = []; // this as well
+    var emails = []; // same as above
+    var phoneNumbers = []; // same as above
     res.status(200).json({
-        message: "Data received by identify endpoint",
-        data: {
-            email: email? email: "No email provided",
-            phoneNumber: phoneNumber? phoneNumber: "No phone number provided"
+        contact: {
+            "primaryContatctId": primaryContactIds,
+			"emails": emails, // first element being email of primary contact 
+			"phoneNumbers": phoneNumbers, // first element being phoneNumber of primary contact
+			"secondaryContactIds": secondaryContactIds // Array of all Contact IDs that are "secondary" to the primary contact
         }
     })
 })
